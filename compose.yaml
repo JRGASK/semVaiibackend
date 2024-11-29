@@ -1,0 +1,21 @@
+services:
+  db:
+    image: 'postgres:latest'
+    restart: always
+    environment:
+      - 'POSTGRES_DB=db_vaiiSem'
+      - 'POSTGRES_USER=jugask'
+      - 'POSTGRES_PASSWORD=jugaskpw'
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgresData:/var/lib/postgresql
+      - ./db:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD-SHELL", "pg.isready - U jugask" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+volumes:
+  postgresData:
+
