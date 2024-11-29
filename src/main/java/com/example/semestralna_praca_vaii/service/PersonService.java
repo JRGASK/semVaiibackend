@@ -1,17 +1,23 @@
 package com.example.semestralna_praca_vaii.service;
 
+import com.example.semestralna_praca_vaii.controller.ResourceAlreadyExists;
+import com.example.semestralna_praca_vaii.controller.ResourceNotFound;
 import com.example.semestralna_praca_vaii.data.Person;
 import com.example.semestralna_praca_vaii.data.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+@Service
 public class PersonService implements IPersonService{
 
     private final PersonRepository personRepository;
 
+    @Autowired
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
@@ -26,7 +32,7 @@ public class PersonService implements IPersonService{
         Optional<Person> person = this.personRepository.findByEmail(email);
 
         if(person.isEmpty()) {
-            return null; //TODO exceptions
+            throw new ResourceNotFound(String.format("Person with %s does not exists",email));
         }else {
             return person.get();
         }
@@ -42,7 +48,7 @@ public class PersonService implements IPersonService{
     @Transactional
     public Person addPerson(Person person) {
         if(this.personRepository.existsByEmail(person.getEmail())) {
-            return null; //TODO exceptions
+            throw  new ResourceAlreadyExists(String.format("Person with %s already exists",person.getEmail()));
         }else {
             return this.personRepository.save(person);
         }
