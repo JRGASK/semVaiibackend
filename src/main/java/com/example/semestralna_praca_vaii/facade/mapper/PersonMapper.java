@@ -21,8 +21,8 @@ public interface PersonMapper {
     PersonDto mapToPersonDto(Person person);
 
     default PagedModel<PersonDto> mapToPageCustomerDto(Page<Person> personPage, Pageable pageable) {
-        List<PersonDto> customerDtos = mapToListPersonDto(personPage.getContent());
-        Page<PersonDto> personDtoPage = new PageImpl<>(customerDtos, pageable, personPage.getTotalElements());
+        List<PersonDto> personDtos = mapToListPersonDto(personPage.getContent());
+        Page<PersonDto> personDtoPage = new PageImpl<>(personDtos, pageable, personPage.getTotalElements());
         return new PagedModel<PersonDto>(personDtoPage);
     }
 }

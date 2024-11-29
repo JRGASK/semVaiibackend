@@ -10,6 +10,15 @@ public class PersonDto {
 
     private String surname;
 
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -37,10 +46,11 @@ public class PersonDto {
 
     @Override
     public String toString() {
-        return "PersonCreateDto{" +
+        return "PersonDto{" +
                 "email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }

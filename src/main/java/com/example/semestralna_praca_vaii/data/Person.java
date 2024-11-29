@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 @Table(name = "person")
 public class Person {
 
+
     @Id
     @Size(max = 255)
     @Column(name = "email", nullable = false)
@@ -33,6 +34,19 @@ public class Person {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = Integer.MAX_VALUE)
     private RoleType role;
+
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public RoleType getRole() {
         return role;
@@ -72,16 +86,5 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                '}';
     }
 }

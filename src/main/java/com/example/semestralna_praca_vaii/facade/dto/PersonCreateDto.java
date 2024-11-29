@@ -12,7 +12,17 @@ public class PersonCreateDto {
 
     private String password;
 
-    private RoleType role;
+    private String role;
+
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -30,7 +40,7 @@ public class PersonCreateDto {
         this.password = password;
     }
 
-    public void setRole(RoleType role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -50,7 +60,7 @@ public class PersonCreateDto {
         return password;
     }
 
-    public RoleType getRole() {
+    public String getRole() {
         return role;
     }
 
@@ -61,7 +71,8 @@ public class PersonCreateDto {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
+                ", role='" + role + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }

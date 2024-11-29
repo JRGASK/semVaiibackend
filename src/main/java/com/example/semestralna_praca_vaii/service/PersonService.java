@@ -1,7 +1,7 @@
 package com.example.semestralna_praca_vaii.service;
 
-import com.example.semestralna_praca_vaii.controller.ResourceAlreadyExists;
-import com.example.semestralna_praca_vaii.controller.ResourceNotFound;
+import com.example.semestralna_praca_vaii.controller.exception.ResourceAlreadyExists;
+import com.example.semestralna_praca_vaii.controller.exception.ResourceNotFound;
 import com.example.semestralna_praca_vaii.data.Person;
 import com.example.semestralna_praca_vaii.data.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Optional;
 
 @Service
@@ -21,6 +20,7 @@ public class PersonService implements IPersonService{
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
+
 
     @Override
     public Page<Person> getAllPersons(Pageable pageable) {
