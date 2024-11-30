@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class customUserDetailsServiceImpl implements UserDetailsService {
         Optional<Person> person = personRepository.findByEmail(username);
 
         if(person.isEmpty()) {
-            throw new UsernameNotFoundException(String.format("Person with %s does not exists",username));
+            throw new UsernameNotFoundException("The provided credentials are not valid.");
         }
 
         return new UserDetails() {
