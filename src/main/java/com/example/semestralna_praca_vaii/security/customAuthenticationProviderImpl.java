@@ -2,6 +2,7 @@ package com.example.semestralna_praca_vaii.security;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -30,7 +31,7 @@ public class customAuthenticationProviderImpl implements AuthenticationProvider 
         }
 
         if (!userDetails.getPassword().equals(password)) {
-            throw new UsernameNotFoundException("The provided credentials are not valid.");
+            throw new BadCredentialsException("The provided credentials are not valid.");
         }
 
         return new UsernamePasswordAuthenticationToken(
