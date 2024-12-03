@@ -4,6 +4,7 @@ package com.example.semestralna_praca_vaii.controller.person;
 import com.example.semestralna_praca_vaii.data.Person;
 import com.example.semestralna_praca_vaii.facade.dto.PersonCreateDto;
 import com.example.semestralna_praca_vaii.facade.dto.PersonDto;
+import com.example.semestralna_praca_vaii.facade.dto.PersonUpdateDto;
 import com.example.semestralna_praca_vaii.facade.dto.error.ErrorDto;
 import com.example.semestralna_praca_vaii.facade.person.PersonFacade;
 import io.swagger.v3.oas.annotations.Operation;
@@ -98,6 +99,24 @@ public class PersonController {
     public ResponseEntity<PersonDto> addPerson(@RequestBody PersonCreateDto personCreateDto){
         PersonDto personDto = this.personFacade.addPerson(personCreateDto);
         return new ResponseEntity<>(personDto, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Update a person")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",
+                    description = "Customer updated successfully ",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Person.class)) }),
+            @ApiResponse(responseCode = "400",
+                    description = "Invalid person data",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
+            @ApiResponse(responseCode = "409",
+                    description = "Person already exists",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
+    })
+    @PutMapping(path = "/person/{email}")
+    public ResponseEntity<PersonDto> updatePerson(@PathVariable("email") String email, @RequestBody PersonUpdateDto personUpdateDto){
+        PersonDto personDto = this.personFacade.updatePerson(email,personUpdateDto);
+        return new ResponseEntity<>(personDto, HttpStatus.OK);
     }
 
 }

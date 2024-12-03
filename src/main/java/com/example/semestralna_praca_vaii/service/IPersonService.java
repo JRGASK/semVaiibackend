@@ -12,5 +12,7 @@ public interface IPersonService {
 
     void deletePersonByEmail(String email);
 
-   Person addPerson(Person person);
+    Person addPerson(Person person);
+
+    Person updatePerson(String email, Person person);
 }

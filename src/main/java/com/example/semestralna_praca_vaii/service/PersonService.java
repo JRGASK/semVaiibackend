@@ -53,4 +53,20 @@ public class PersonService implements IPersonService{
             return this.personRepository.save(person);
         }
     }
+
+    @Override
+    @Transactional
+    public Person updatePerson(String email, Person personUpdate) {
+
+        Optional<Person> person = this.personRepository.findByEmail(email);
+        if(person.isEmpty()) {
+            throw new ResourceNotFound(String.format("Person with %s does not exists",personUpdate.getEmail()));
+        }else {
+            person.get().setName(personUpdate.getName());
+            person.get().setSurname(personUpdate.getSurname());
+            person.get().setRole(personUpdate.getRole());
+            person.get().setPhoneNumber(personUpdate.getPhoneNumber());
+            return this.personRepository.save(person.get());
+        }
+    }
 }
