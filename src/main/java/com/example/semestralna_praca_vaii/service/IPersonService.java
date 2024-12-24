@@ -15,4 +15,6 @@ public interface IPersonService {
     Person addPerson(Person person);
 
     Person updatePerson(String email, Person person);
+
+    Person registerPerson(Person person);
 }

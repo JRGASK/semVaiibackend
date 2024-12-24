@@ -4,6 +4,7 @@ import com.example.semestralna_praca_vaii.data.Person;
 import com.example.semestralna_praca_vaii.facade.dto.PersonCreateDto;
 import com.example.semestralna_praca_vaii.facade.dto.PersonDto;
 import com.example.semestralna_praca_vaii.facade.dto.PersonUpdateDto;
+import com.example.semestralna_praca_vaii.facade.dto.RegisterPersonDto;
 import com.example.semestralna_praca_vaii.facade.mapper.PersonMapper;
 import com.example.semestralna_praca_vaii.service.PersonService;
 import org.springframework.data.domain.Pageable;
@@ -47,6 +48,12 @@ public class PersonFacade implements IPersonFacade{
     public PersonDto updatePerson(String email, PersonUpdateDto personUpdateDto) {
         Person person = this.personMapper.personUpdateDtoToPerson(personUpdateDto);
         return this.personMapper.mapToPersonDto(this.personService.updatePerson(email,person));
+    }
+
+    @Override
+    public PersonDto registerPerson(RegisterPersonDto registerPersonDto) {
+        Person person = this.personMapper.mapToPerson(registerPersonDto);
+        return this.personMapper.mapToPersonDto(this.personService.registerPerson(person));
     }
 
 }

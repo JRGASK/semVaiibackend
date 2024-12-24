@@ -1,10 +1,7 @@
 package com.example.semestralna_praca_vaii.facade.mapper;
 
 import com.example.semestralna_praca_vaii.data.Person;
-import com.example.semestralna_praca_vaii.facade.dto.PersonCreateDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonLoginDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonUpdateDto;
+import com.example.semestralna_praca_vaii.facade.dto.*;
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -19,6 +16,8 @@ public interface PersonMapper {
     List<PersonDto> mapToListPersonDto(List<Person> person);
 
     Person mapToPerson(PersonCreateDto personCreateDto);
+
+    Person mapToPerson(RegisterPersonDto registerPersonDto);
 
     PersonDto mapToPersonDto(Person person);
 

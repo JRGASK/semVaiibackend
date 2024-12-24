@@ -4,6 +4,7 @@ import com.example.semestralna_praca_vaii.controller.exception.ResourceAlreadyEx
 import com.example.semestralna_praca_vaii.controller.exception.ResourceNotFound;
 import com.example.semestralna_praca_vaii.data.Person;
 import com.example.semestralna_praca_vaii.data.PersonRepository;
+import com.example.semestralna_praca_vaii.data.RoleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -67,6 +68,17 @@ public class PersonService implements IPersonService{
             person.get().setRole(personUpdate.getRole());
             person.get().setPhoneNumber(personUpdate.getPhoneNumber());
             return this.personRepository.save(person.get());
+        }
+    }
+
+    @Override
+    public Person registerPerson(Person registerPerson) {
+        Person person = registerPerson;
+        if(this.personRepository.existsByEmail(registerPerson.getEmail())) {
+            throw new ResourceAlreadyExists(String.format("Person with %s already exists",registerPerson.getEmail()));
+        }else {
+            registerPerson.setRole(RoleType.CUSTOMER);
+            return this.personRepository.save(registerPerson);
         }
     }
 }

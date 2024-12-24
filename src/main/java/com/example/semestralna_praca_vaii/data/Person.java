@@ -41,8 +41,6 @@ public class Person {
     private RoleType role;
 
     @Size(max = 255)
-    @NotNull
-    @NotEmpty(message = "Phone number must be not null")
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 

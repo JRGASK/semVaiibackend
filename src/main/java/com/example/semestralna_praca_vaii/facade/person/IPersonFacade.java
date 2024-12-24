@@ -3,6 +3,7 @@ package com.example.semestralna_praca_vaii.facade.person;
 import com.example.semestralna_praca_vaii.facade.dto.PersonCreateDto;
 import com.example.semestralna_praca_vaii.facade.dto.PersonDto;
 import com.example.semestralna_praca_vaii.facade.dto.PersonUpdateDto;
+import com.example.semestralna_praca_vaii.facade.dto.RegisterPersonDto;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedModel;
 
@@ -18,4 +19,5 @@ public interface IPersonFacade {
 
     PersonDto updatePerson(String email, PersonUpdateDto personUpdateDto);
 
+    PersonDto registerPerson(RegisterPersonDto registerPersonDto);
 }
