@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>x</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>xx</name>
-    <description>xxx</description>
+    <name>Vaii</name>
+    <description>Vaii</description>
     <url/>
     <licenses>
         <license/>
@@ -77,11 +77,6 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.5.0</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>

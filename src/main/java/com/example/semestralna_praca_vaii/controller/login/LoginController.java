@@ -1,9 +1,16 @@
 package com.example.semestralna_praca_vaii.controller.login;
 
 
+import com.example.semestralna_praca_vaii.data.Person;
 import com.example.semestralna_praca_vaii.facade.dto.PersonDto;
 import com.example.semestralna_praca_vaii.facade.dto.RegisterPersonDto;
+import com.example.semestralna_praca_vaii.facade.dto.error.ErrorDto;
 import com.example.semestralna_praca_vaii.facade.person.PersonFacade;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +32,20 @@ public class LoginController {
         this.personFacade = personFacade;
     }
 
+
+    @Operation(summary = "login")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Found the person",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonDto.class)) }),
+            @ApiResponse(responseCode = "400",
+                    description = "Invalid email or password",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
+            @ApiResponse(responseCode = "404",
+                    description = "Invalid email or password",
+                    content = @Content(mediaType = "application/json",schema = @Schema(implementation = ErrorDto.class)))
+    })
+
     @PostMapping
     public ResponseEntity<PersonDto> login(Principal principal){
 
@@ -33,6 +54,18 @@ public class LoginController {
         return new ResponseEntity<PersonDto>(personDto,HttpStatus.OK);
     }
 
+    @Operation(summary = "Create a new person")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201",
+                    description = "Customer created successfully ",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Person.class)) }),
+            @ApiResponse(responseCode = "400",
+                    description = "Invalid person data",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
+            @ApiResponse(responseCode = "409",
+                    description = "Person already exists",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
+    })
     @PostMapping("/register")
     public ResponseEntity<PersonDto> register(@RequestBody RegisterPersonDto registerPersonDto){
         PersonDto personDto = this.personFacade.registerPerson(registerPersonDto);
