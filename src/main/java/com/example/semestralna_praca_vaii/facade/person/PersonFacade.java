@@ -1,12 +1,12 @@
 package com.example.semestralna_praca_vaii.facade.person;
 
-import com.example.semestralna_praca_vaii.data.Person;
-import com.example.semestralna_praca_vaii.facade.dto.PersonCreateDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonUpdateDto;
-import com.example.semestralna_praca_vaii.facade.dto.RegisterPersonDto;
+import com.example.semestralna_praca_vaii.data.person.Person;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonCreateDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonUpdateDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.RegisterPersonDto;
 import com.example.semestralna_praca_vaii.facade.mapper.PersonMapper;
-import com.example.semestralna_praca_vaii.service.PersonService;
+import com.example.semestralna_praca_vaii.service.person.PersonService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedModel;
 import org.springframework.stereotype.Service;

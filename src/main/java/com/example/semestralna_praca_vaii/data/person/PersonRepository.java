@@ -1,4 +1,4 @@
-package com.example.semestralna_praca_vaii.data;
+package com.example.semestralna_praca_vaii.data.person;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

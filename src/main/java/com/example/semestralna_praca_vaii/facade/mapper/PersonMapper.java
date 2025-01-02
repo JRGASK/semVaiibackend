@@ -1,7 +1,7 @@
 package com.example.semestralna_praca_vaii.facade.mapper;
 
-import com.example.semestralna_praca_vaii.data.Person;
-import com.example.semestralna_praca_vaii.facade.dto.*;
+import com.example.semestralna_praca_vaii.data.person.Person;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.*;
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

@@ -1,4 +1,4 @@
-package com.example.semestralna_praca_vaii.data;
+package com.example.semestralna_praca_vaii.data.person;
 
 //TODO ROLE AKO
 import jakarta.persistence.*;

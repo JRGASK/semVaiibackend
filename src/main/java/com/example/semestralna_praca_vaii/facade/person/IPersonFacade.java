@@ -1,9 +1,9 @@
 package com.example.semestralna_praca_vaii.facade.person;
 
-import com.example.semestralna_praca_vaii.facade.dto.PersonCreateDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonUpdateDto;
-import com.example.semestralna_praca_vaii.facade.dto.RegisterPersonDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonCreateDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonUpdateDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.RegisterPersonDto;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedModel;
 

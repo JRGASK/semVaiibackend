@@ -1,6 +1,6 @@
-package com.example.semestralna_praca_vaii.service;
+package com.example.semestralna_praca_vaii.service.person;
 
-import com.example.semestralna_praca_vaii.data.Person;
+import com.example.semestralna_praca_vaii.data.person.Person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

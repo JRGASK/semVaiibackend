@@ -1,10 +1,10 @@
-package com.example.semestralna_praca_vaii.service;
+package com.example.semestralna_praca_vaii.service.person;
 
 import com.example.semestralna_praca_vaii.controller.exception.ResourceAlreadyExists;
 import com.example.semestralna_praca_vaii.controller.exception.ResourceNotFound;
-import com.example.semestralna_praca_vaii.data.Person;
-import com.example.semestralna_praca_vaii.data.PersonRepository;
-import com.example.semestralna_praca_vaii.data.RoleType;
+import com.example.semestralna_praca_vaii.data.person.Person;
+import com.example.semestralna_praca_vaii.data.person.PersonRepository;
+import com.example.semestralna_praca_vaii.data.person.RoleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

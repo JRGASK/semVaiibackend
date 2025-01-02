@@ -1,6 +1,4 @@
-package com.example.semestralna_praca_vaii.facade.dto;
-
-import com.example.semestralna_praca_vaii.data.RoleType;
+package com.example.semestralna_praca_vaii.facade.dto.personDto;
 
 public class PersonCreateDto {
 

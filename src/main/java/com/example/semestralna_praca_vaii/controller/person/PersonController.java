@@ -1,10 +1,10 @@
 package com.example.semestralna_praca_vaii.controller.person;
 
 
-import com.example.semestralna_praca_vaii.data.Person;
-import com.example.semestralna_praca_vaii.facade.dto.PersonCreateDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonDto;
-import com.example.semestralna_praca_vaii.facade.dto.PersonUpdateDto;
+import com.example.semestralna_praca_vaii.data.person.Person;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonCreateDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonDto;
+import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonUpdateDto;
 import com.example.semestralna_praca_vaii.facade.dto.error.ErrorDto;
 import com.example.semestralna_praca_vaii.facade.person.PersonFacade;
 import io.swagger.v3.oas.annotations.Operation;

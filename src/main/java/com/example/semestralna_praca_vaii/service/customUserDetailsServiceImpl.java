@@ -1,7 +1,7 @@
 package com.example.semestralna_praca_vaii.service;
 
-import com.example.semestralna_praca_vaii.data.Person;
-import com.example.semestralna_praca_vaii.data.PersonRepository;
+import com.example.semestralna_praca_vaii.data.person.Person;
+import com.example.semestralna_praca_vaii.data.person.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

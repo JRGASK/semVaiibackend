@@ -1,10 +1,6 @@
-package com.example.semestralna_praca_vaii.facade.dto;
+package com.example.semestralna_praca_vaii.facade.dto.personDto;
 
-import com.example.semestralna_praca_vaii.data.RoleType;
-
-public class PersonDto {
-
-    private String email;
+public class PersonUpdateDto {
 
     private String name;
 
@@ -14,24 +10,12 @@ public class PersonDto {
 
     private String role;
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public void setName(String name) {
@@ -42,10 +26,6 @@ public class PersonDto {
         this.surname = surname;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getName() {
         return name;
     }
@@ -54,14 +34,21 @@ public class PersonDto {
         return surname;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
-        return "PersonDto{" +
-                "email='" + email + '\'' +
-                ", name='" + name + '\'' +
+        return "PersonUpdateDto{" +
+                "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", role=" + role +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

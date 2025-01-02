@@ -1,4 +1,4 @@
-package com.example.semestralna_praca_vaii.facade.dto;
+package com.example.semestralna_praca_vaii.facade.dto.personDto;
 
 public class RegisterPersonDto {
 
