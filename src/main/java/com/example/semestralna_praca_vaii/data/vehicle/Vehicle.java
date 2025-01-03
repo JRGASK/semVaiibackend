@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Size;
 public class Vehicle {
 
     @Id
-    @NotEmpty(message = "VRN must be not null")
+    @NotEmpty(message = "plateNumber must be not null")
     @Size(max = 9)
     @Column(name = "vehicleregistrationnumber", nullable = false, length = 9)
     private String plateNumber;
