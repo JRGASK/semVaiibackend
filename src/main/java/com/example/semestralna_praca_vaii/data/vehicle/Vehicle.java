@@ -14,7 +14,7 @@ public class Vehicle {
     @NotEmpty(message = "VRN must be not null")
     @Size(max = 9)
     @Column(name = "vehicleregistrationnumber", nullable = false, length = 9)
-    private String VHC;
+    private String plateNumber;
 
     @Column(name = "type" ,nullable = false, length = Integer.MAX_VALUE)
     @Enumerated(EnumType.STRING)
@@ -90,11 +90,11 @@ public class Vehicle {
         this.type = type;
     }
 
-    public String getVHC() {
-        return VHC;
+    public String getPlateNumber() {
+        return plateNumber;
     }
 
-    public void setVHC(String VHC) {
-        this.VHC = VHC;
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
     }
 }
