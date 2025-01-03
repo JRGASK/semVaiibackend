@@ -2,10 +2,6 @@ package com.example.semestralna_praca_vaii.facade.dto.vehicleDto;
 
 import com.example.semestralna_praca_vaii.data.person.Person;
 import com.example.semestralna_praca_vaii.data.vehicle.VehicleType;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 public class VehicleDto {
 

@@ -16,4 +16,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, String> {
 
     boolean existsByPlateNumber(String plateNumber);
 
+    Page<Vehicle> findByEmail(String email, Pageable pageable);
+
 }

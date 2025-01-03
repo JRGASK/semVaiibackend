@@ -16,4 +16,7 @@ public interface IVehicleService {
 
     void deleteVehicleByPlate(String plate);
 
+    Page<Vehicle> getVehiclesByEmail(String email, Pageable pageable);
+
+
 }
