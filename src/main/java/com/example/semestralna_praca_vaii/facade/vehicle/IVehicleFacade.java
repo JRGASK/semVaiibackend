@@ -1,6 +1,8 @@
 package com.example.semestralna_praca_vaii.facade.vehicle;
 
+import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleCreateDto;
 import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleDto;
+import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleUpdateDto;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedModel;
 
@@ -12,9 +14,9 @@ public interface IVehicleFacade {
 
     void deleteVehicleByPlate(String plate);
 
-    VehicleDto addVehicle(VehicleDto vehicleDto);
+    VehicleDto addVehicle(VehicleCreateDto vehicleCreateDto);
 
-    VehicleDto updateVehicle(String plate, VehicleDto vehicleDto);
+    VehicleDto updateVehicle(String plate, VehicleUpdateDto vehicleUpdateDto);
 
     PagedModel<VehicleDto> getVehicleByEmail(String email, Pageable pageable);
 
