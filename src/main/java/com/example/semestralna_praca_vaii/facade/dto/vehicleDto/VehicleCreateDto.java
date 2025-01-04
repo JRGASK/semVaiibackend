@@ -74,4 +74,17 @@ public class VehicleCreateDto {
     public void setEmail(Person email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "VehicleCreateDto{" +
+                "plateNumber='" + plateNumber + '\'' +
+                ", type=" + type +
+                ", engine='" + engine + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", email=" + email +
+                '}';
+    }
 }

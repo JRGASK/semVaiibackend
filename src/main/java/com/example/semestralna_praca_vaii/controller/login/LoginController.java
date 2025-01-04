@@ -25,7 +25,7 @@ import java.security.Principal;
 @RequestMapping("/login")
 public class LoginController {
 
-    private PersonFacade personFacade;
+    private final PersonFacade personFacade;
 
     @Autowired
     public LoginController(PersonFacade personFacade) {
@@ -33,39 +33,15 @@ public class LoginController {
     }
 
 
-    @Operation(summary = "login")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200",
-                    description = "Found the person",
-                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonDto.class)) }),
-            @ApiResponse(responseCode = "400",
-                    description = "Invalid email or password",
-                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
-            @ApiResponse(responseCode = "404",
-                    description = "Invalid email or password",
-                    content = @Content(mediaType = "application/json",schema = @Schema(implementation = ErrorDto.class)))
-    })
 
     @PostMapping
     public ResponseEntity<PersonDto> login(Principal principal){
 
         PersonDto personDto = this.personFacade.getPersonByEmail(principal.getName());
-
+        System.out.println(personDto);
         return new ResponseEntity<PersonDto>(personDto,HttpStatus.OK);
     }
 
-    @Operation(summary = "Create a new person")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201",
-                    description = "Customer created successfully ",
-                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Person.class)) }),
-            @ApiResponse(responseCode = "400",
-                    description = "Invalid person data",
-                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
-            @ApiResponse(responseCode = "409",
-                    description = "Person already exists",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
-    })
     @PostMapping("/register")
     public ResponseEntity<PersonDto> register(@RequestBody RegisterPersonDto registerPersonDto){
         PersonDto personDto = this.personFacade.registerPerson(registerPersonDto);

@@ -10,6 +10,16 @@ public class PersonDto {
 
     private String phoneNumber;
 
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -49,6 +59,7 @@ public class PersonDto {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

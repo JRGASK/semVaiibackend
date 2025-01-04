@@ -68,7 +68,7 @@ public class PersonController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
                     description = "Person deleted successfully ",
-                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonDto.class)) }),
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonCreateDto.class)) }),
             @ApiResponse(responseCode = "400",
                     description = "Invalid person email",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
@@ -86,7 +86,7 @@ public class PersonController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201",
                     description = "Customer created successfully ",
-                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonDto.class)) }),
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Person.class)) }),
             @ApiResponse(responseCode = "400",
                     description = "Invalid person data",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
@@ -105,7 +105,7 @@ public class PersonController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201",
                     description = "Customer updated successfully ",
-                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonDto.class)) }),
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Person.class)) }),
             @ApiResponse(responseCode = "400",
                     description = "Invalid person data",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
