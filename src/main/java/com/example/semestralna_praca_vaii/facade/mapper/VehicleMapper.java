@@ -1,8 +1,6 @@
 package com.example.semestralna_praca_vaii.facade.mapper;
 
-import com.example.semestralna_praca_vaii.data.person.Person;
 import com.example.semestralna_praca_vaii.data.vehicle.Vehicle;
-import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonDto;
 import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleCreateDto;
 import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleDto;
 import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleUpdateDto;

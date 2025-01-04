@@ -33,12 +33,11 @@ public class LoginController {
     }
 
 
-
     @PostMapping
     public ResponseEntity<PersonDto> login(Principal principal){
 
         PersonDto personDto = this.personFacade.getPersonByEmail(principal.getName());
-        System.out.println(personDto);
+        System.out.println("Controler>" + personDto);
         return new ResponseEntity<PersonDto>(personDto,HttpStatus.OK);
     }
 
