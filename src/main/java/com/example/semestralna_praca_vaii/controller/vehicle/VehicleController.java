@@ -6,6 +6,7 @@ import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleDto;
 import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleUpdateDto;
 import com.example.semestralna_praca_vaii.facade.vehicle.VehicleFacade;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -55,7 +56,7 @@ public class VehicleController {
                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = ErrorDto.class)))
     })
     @GetMapping(path = "/vehicles/vehicle/{plate}")
-    public ResponseEntity<VehicleDto> getVehicleByPlate(@ParameterObject String plate){
+    public ResponseEntity<VehicleDto> getVehicleByPlate(@Parameter(description = "plate of vehicle") @PathVariable("plate")String plate){
        VehicleDto vehicleDto = this.vehicleFacade.getVehicleByPlate(plate);
        return new ResponseEntity<>(vehicleDto, HttpStatus.OK);
     }
@@ -79,7 +80,7 @@ public class VehicleController {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
     })
     @DeleteMapping(path = "/vehicle/{plate}")
-    public ResponseEntity<Void> deleteVehicleByPlate(@ParameterObject String plate){
+    public ResponseEntity<Void> deleteVehicleByPlate(@Parameter(description = "plate of vehicle") @PathVariable("plate")String plate){
         this.vehicleFacade.deleteVehicleByPlate(plate);
         return new ResponseEntity<>(HttpStatus.OK);
     }
