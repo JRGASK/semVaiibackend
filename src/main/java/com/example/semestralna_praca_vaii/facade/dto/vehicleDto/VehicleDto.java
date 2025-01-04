@@ -17,7 +17,7 @@ public class VehicleDto {
 
     private String color;
 
-    private Person email;
+    private String email;
 
     public String getPlateNumber() {
         return plateNumber;
@@ -67,11 +67,11 @@ public class VehicleDto {
         this.color = color;
     }
 
-    public Person getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Person email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 

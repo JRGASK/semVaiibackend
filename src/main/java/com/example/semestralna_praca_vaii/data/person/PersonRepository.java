@@ -3,6 +3,7 @@ package com.example.semestralna_praca_vaii.data.person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -11,6 +12,7 @@ import java.util.Optional;
 public interface PersonRepository extends JpaRepository<Person, String> {
 
     Page<Person> findAll(Pageable pageable);
+
 
     Optional<Person> findByEmail(String email);
 

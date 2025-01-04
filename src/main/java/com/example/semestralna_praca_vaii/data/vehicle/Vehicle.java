@@ -37,16 +37,26 @@ public class Vehicle {
     private String color;
 
     @NotNull
-    @NotEmpty(message = "Email must be not null")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "email", nullable = false)
-    private Person email;
+    @JoinColumn(name = "email", referencedColumnName = "email", nullable = false)
+    private Person person;
 
-    public Person getEmail() {
-        return email;
+    @Column(insertable=false, updatable=false)
+    private String email;
+
+    public @NotNull Person getPerson() {
+        return person;
     }
 
-    public void setEmail(Person email) {
+    public void setPerson(@NotNull Person person) {
+        this.person = person;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -96,5 +106,18 @@ public class Vehicle {
 
     public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "plateNumber='" + plateNumber + '\'' +
+                ", type=" + type +
+                ", engine='" + engine + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", email=" + person.getEmail() +
+                '}';
     }
 }

@@ -54,7 +54,7 @@ public class VehicleController {
                     description = "Vehicle not found",
                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = ErrorDto.class)))
     })
-    @GetMapping(path = "/vehicle/{plate}")
+    @GetMapping(path = "/vehicles/vehicle/{plate}")
     public ResponseEntity<VehicleDto> getVehicleByPlate(@ParameterObject String plate){
        VehicleDto vehicleDto = this.vehicleFacade.getVehicleByPlate(plate);
        return new ResponseEntity<>(vehicleDto, HttpStatus.OK);
