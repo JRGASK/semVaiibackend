@@ -128,7 +128,7 @@ public class VehicleController {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
     })
     @PutMapping(path = "/vehicle/{plate}")
-    public ResponseEntity<VehicleDto> updateVehicle(@PathParam("plate") String plate, @RequestBody VehicleUpdateDto vehicleCreateDto){
+    public ResponseEntity<VehicleDto> updateVehicle(@PathVariable("plate") String plate, @RequestBody VehicleUpdateDto vehicleCreateDto){
         VehicleDto vehicleDto = this.vehicleFacade.updateVehicle(plate,vehicleCreateDto);
         return new ResponseEntity<>(vehicleDto, HttpStatus.OK);
     }
