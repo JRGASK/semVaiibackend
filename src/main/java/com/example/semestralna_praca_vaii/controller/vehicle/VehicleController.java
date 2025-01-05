@@ -74,7 +74,7 @@ public class VehicleController {
                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = ErrorDto.class)))
     })
     @GetMapping(path = "/vehicle/{email}")
-    public ResponseEntity<PagedModel<VehicleDto>> getAllVehiclesByEmail(@ParameterObject String email, @ParameterObject Pageable pageable){
+    public ResponseEntity<PagedModel<VehicleDto>> getAllVehiclesByEmail(@Parameter(description = "email of vehicle") @PathVariable("email")String email, @ParameterObject Pageable pageable){
         PagedModel<VehicleDto> vehicleDtoPagedModel = this.vehicleFacade.getVehicleByEmail(email,pageable);
         return new ResponseEntity<>(vehicleDtoPagedModel, HttpStatus.OK);
     }
