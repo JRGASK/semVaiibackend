@@ -61,6 +61,18 @@ public class VehicleController {
        return new ResponseEntity<>(vehicleDto, HttpStatus.OK);
     }
 
+    @Operation(summary = "Get vehicle by email")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Found the vehicle",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = VehicleDto.class)) }),
+            @ApiResponse(responseCode = "400",
+                    description = "Invalid email",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
+            @ApiResponse(responseCode = "404",
+                    description = "Vehicle not found",
+                    content = @Content(mediaType = "application/json",schema = @Schema(implementation = ErrorDto.class)))
+    })
     @GetMapping(path = "/vehicle/{email}")
     public ResponseEntity<PagedModel<VehicleDto>> getAllVehiclesByEmail(@ParameterObject String email, @ParameterObject Pageable pageable){
         PagedModel<VehicleDto> vehicleDtoPagedModel = this.vehicleFacade.getVehicleByEmail(email,pageable);
