@@ -14,3 +14,11 @@ INSERT INTO vehicle (
 )
 VALUES
     ('CAR', 'V8', 'SKODA', 'OCTAVIA-RS', 'ABC123456', 'juraj@admin.com','white');
+
+INSERT INTO customerService (name, price, info)
+VALUES
+    ('Engine Diagnostics', '70 EUR', 'Comprehensive engine performance analysis');
+
+INSERT INTO customerService (name, price, info)
+VALUES
+    ('Detailed Cleaning', '30 EUR', 'Complete interior and exterior vehicle cleaning');
