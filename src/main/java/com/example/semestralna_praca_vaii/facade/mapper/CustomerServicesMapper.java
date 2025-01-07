@@ -4,6 +4,7 @@ import com.example.semestralna_praca_vaii.data.customerServices.CustomerServices
 import com.example.semestralna_praca_vaii.data.vehicle.Vehicle;
 import com.example.semestralna_praca_vaii.facade.dto.CustomerServicesDto.CustomerServicesCreteDto;
 import com.example.semestralna_praca_vaii.facade.dto.CustomerServicesDto.CustomerServicesDto;
+import com.example.semestralna_praca_vaii.facade.dto.CustomerServicesDto.CustomerServicesUpdateDto;
 import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleDto;
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
@@ -22,7 +23,7 @@ public interface CustomerServicesMapper {
 
     CustomerServices mapToCustomerServices(CustomerServicesCreteDto customerServicesCreteDto);
 
-    CustomerServices customerServicesUpdateDtoToCustomerServices(CustomerServicesDto customerServicesDto);
+    CustomerServices mapCustomerServiceUpdateDtoToCustomerService(CustomerServicesUpdateDto customerServicesUpdateDto);
 
     default PagedModel<CustomerServicesDto> mapToPageDto(Page<CustomerServices> customerServicesPage, Pageable pageable) {
         List<CustomerServicesDto> customerServicesDto = mapToListCustomerServicesDto(customerServicesPage.getContent());

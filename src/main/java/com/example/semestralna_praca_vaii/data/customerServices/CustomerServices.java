@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "customerService")
+@Table(name = "customerservice")
 public class CustomerServices {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "serviceid", nullable = false)
     private Integer id;
 
