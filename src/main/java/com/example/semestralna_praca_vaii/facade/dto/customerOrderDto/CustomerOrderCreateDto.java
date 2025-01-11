@@ -1,19 +1,8 @@
 package com.example.semestralna_praca_vaii.facade.dto.customerOrderDto;
 
-import com.example.semestralna_praca_vaii.data.customerServices.CustomerServices;
-import com.example.semestralna_praca_vaii.data.person.Person;
-import com.example.semestralna_praca_vaii.data.vehicle.Vehicle;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
 import java.time.LocalDate;
 
-public class CustomerOrderDto {
-
-    private Long id;
-
-    private LocalDate dateofcreate;
+public class CustomerOrderCreateDto {
 
     private LocalDate date;
 
@@ -24,22 +13,6 @@ public class CustomerOrderDto {
     private String vehiclePlateNumber;
 
     private String email;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDate getDateofcreate() {
-        return dateofcreate;
-    }
-
-    public void setDateofcreate(LocalDate dateofcreate) {
-        this.dateofcreate = dateofcreate;
-    }
 
     public LocalDate getDate() {
         return date;
@@ -83,10 +56,8 @@ public class CustomerOrderDto {
 
     @Override
     public String toString() {
-        return "CustomerOrderDto{" +
-                "id=" + id +
-                ", dateofcreate=" + dateofcreate +
-                ", date=" + date +
+        return "CustomerOrderCreateDto{" +
+                "date=" + date +
                 ", price='" + price + '\'' +
                 ", serviceId=" + serviceId +
                 ", vehiclePlateNumber='" + vehiclePlateNumber + '\'' +

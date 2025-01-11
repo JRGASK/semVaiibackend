@@ -29,7 +29,7 @@ public class CustomerOrder {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "serviceId", nullable = false)
-    private CustomerServices serviceid;
+    private CustomerServices service;
 
     @NotNull
     @Column(name = "dateOfCreate", nullable = false)
@@ -109,11 +109,11 @@ public class CustomerOrder {
     }
 
     public CustomerServices getService() {
-        return serviceid;
+        return service;
     }
 
-    public void setService(CustomerServices serviceid) {
-        this.serviceid = serviceid;
+    public void setService(CustomerServices service) {
+        this.service = service;
     }
 
     public Vehicle getVehicle() {
@@ -130,5 +130,18 @@ public class CustomerOrder {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerOrder{" +
+                "id=" + id +
+                ", dateofcreate=" + dateofcreate +
+                ", date=" + date +
+                ", price='" + price + '\'' +
+                ", serviceId=" + serviceId +
+                ", vehiclePlateNumber='" + vehiclePlateNumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
