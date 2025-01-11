@@ -29,7 +29,7 @@ ALTER TABLE vehicle
 
 
 CREATE TABLE customerService (
-                        serviceId             SERIAL PRIMARY KEY,
+                        service_id            SERIAL PRIMARY KEY,
                         name                  VARCHAR(255) NULL,
                         price                 VARCHAR(255) NULL,
                         info                  VARCHAR(255) NULL
@@ -38,8 +38,8 @@ CREATE TABLE customerService (
 CREATE TABLE customerOrder (
                         orderID               SERIAL PRIMARY KEY,
                         email                 VARCHAR(255) NOT NULL ,
-                        vehicle               VARCHAR(9),
-                        serviceId             INTEGER NOT NULL,
+                        vehicleRegistrationNumber               VARCHAR(9),
+                        service_id            INTEGER NOT NULL,
                         dateOfCreate          DATE NOT NULL,
                         date                  DATE NOT NULL ,
                         price                 VARCHAR(255) NULL
@@ -50,9 +50,9 @@ ALTER TABLE customerOrder
     ADD CONSTRAINT r_order_person FOREIGN KEY (email) REFERENCES person (email);
 
 ALTER TABLE customerOrder
-    ADD CONSTRAINT r_order_vehicle FOREIGN KEY (vehicle) REFERENCES vehicle (vehicleRegistrationNumber);
+    ADD CONSTRAINT r_order_vehicle FOREIGN KEY (vehicleRegistrationNumber) REFERENCES vehicle (vehicleRegistrationNumber);
 
 ALTER TABLE customerOrder
-    ADD CONSTRAINT r_order_service FOREIGN KEY (serviceId) REFERENCES customerService (serviceId);
+    ADD CONSTRAINT r_order_service FOREIGN KEY (service_id) REFERENCES customerService (service_id);
 
 

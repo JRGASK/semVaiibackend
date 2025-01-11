@@ -9,7 +9,7 @@ public class CustomerServices {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "serviceid", nullable = false)
+    @Column(name = "service_id", nullable = false)
     private Integer id;
 
     @Size(max = 255)

@@ -10,11 +10,11 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "customerOrder")
+@Table(name = "customerorder")
 public class CustomerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orderId", nullable = false)
+    @Column(name = "orderid", nullable = false)
     private Long id;
 
     @NotNull
@@ -23,16 +23,16 @@ public class CustomerOrder {
     private Person person;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vehicle")
+    @JoinColumn(name = "vehicleregistrationnumber", referencedColumnName ="vehicleregistrationnumber")
     private Vehicle vehicle;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "serviceId", nullable = false)
+    @JoinColumn(name = "service_id",referencedColumnName ="service_id", nullable = false)
     private CustomerServices service;
 
     @NotNull
-    @Column(name = "dateOfCreate", nullable = false)
+    @Column(name = "dateofcreate", nullable = false)
     private LocalDate dateofcreate;
 
     @NotNull
@@ -44,28 +44,28 @@ public class CustomerOrder {
     private String price;
 
     @Column(insertable=false, updatable=false)
-    private Integer serviceId;
+    private Integer service_id;
 
     @Column(insertable=false, updatable=false)
-    private String vehiclePlateNumber;
+    private String vehicleregistrationnumber;
 
     @Column(insertable=false, updatable=false)
     private String email;
 
     public String getVehiclePlateNumber() {
-        return vehiclePlateNumber;
+        return vehicleregistrationnumber;
     }
 
     public void setVehiclePlateNumber(String vehiclePlateNumber) {
-        this.vehiclePlateNumber = vehiclePlateNumber;
+        this.vehicleregistrationnumber = vehiclePlateNumber;
     }
 
     public Integer getServiceId() {
-        return serviceId;
+        return service_id;
     }
 
     public void setServiceId(Integer serviceId) {
-        this.serviceId = serviceId;
+        this.service_id = serviceId;
     }
 
     public @NotNull Person getPerson() {
@@ -139,9 +139,9 @@ public class CustomerOrder {
                 ", dateofcreate=" + dateofcreate +
                 ", date=" + date +
                 ", price='" + price + '\'' +
-                ", serviceId=" + serviceId +
-                ", vehiclePlateNumber='" + vehiclePlateNumber + '\'' +
-                ", email='" + email + '\'' +
+                ", serviceId=" + service.getId() +
+                ", vehiclePlateNumber='" + vehicle.getPlateNumber() + '\'' +
+                ", email='" + person.getEmail() + '\'' +
                 '}';
     }
 }
