@@ -34,3 +34,25 @@ CREATE TABLE customerService (
                         price                 VARCHAR(255) NULL,
                         info                  VARCHAR(255) NULL
 );
+
+CREATE TABLE customerOrder (
+                        orderID               SERIAL PRIMARY KEY,
+                        email                 VARCHAR(255) NOT NULL ,
+                        vehicle               VARCHAR(9),
+                        serviceId             INTEGER NOT NULL,
+                        dateOfCreate          DATE NOT NULL,
+                        date                  DATE NOT NULL ,
+                        price                 VARCHAR(255) NULL
+
+);
+
+ALTER TABLE customerOrder
+    ADD CONSTRAINT r_order_person FOREIGN KEY (email) REFERENCES person (email);
+
+ALTER TABLE customerOrder
+    ADD CONSTRAINT r_order_vehicle FOREIGN KEY (vehicle) REFERENCES vehicle (vehicleRegistrationNumber);
+
+ALTER TABLE customerOrder
+    ADD CONSTRAINT r_order_service FOREIGN KEY (serviceId) REFERENCES customerService (serviceId);
+
+
