@@ -8,6 +8,7 @@ import com.example.semestralna_praca_vaii.data.customerServices.CustomerServices
 import com.example.semestralna_praca_vaii.service.customerServices.CustomerServicesService;
 import com.example.semestralna_praca_vaii.service.person.PersonService;
 import com.example.semestralna_praca_vaii.service.vehicle.VehicleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class CustomerOrderService implements ICustomerOrderService {
 
     private final CustomerServicesService customerServicesService;
 
+    @Autowired
     public CustomerOrderService(CustomerOrderRepository customerOrderRepository, PersonService personService, VehicleService vehicleService, CustomerServicesService customerServicesService) {
         this.customerOrderRepository = customerOrderRepository;
         this.personService = personService;
