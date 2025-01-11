@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Table(name = "customerOrder")
 public class CustomerOrder {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId", nullable = false)
     private Long id;
 

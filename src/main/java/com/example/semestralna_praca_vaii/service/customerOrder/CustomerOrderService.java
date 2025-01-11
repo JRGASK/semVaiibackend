@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -60,6 +61,7 @@ public class CustomerOrderService implements ICustomerOrderService {
         if (this.customerOrderRepository.existsById(customerOrder.getId())) {
             throw new ResourceNotFound(String.format("CustomerOrder with %s already exists",customerOrder.getId()));
         }else {
+            customerOrder.setDateofcreate(LocalDate.now());
             customerOrder.setPerson(person);
             customerOrder.setVehicle(vehicle);
             customerOrder.setService(customerServices);
@@ -70,7 +72,21 @@ public class CustomerOrderService implements ICustomerOrderService {
 
     @Override
     public CustomerOrder updateCustomerOrder(Long id, CustomerOrder customerOrder) {
-        return null;
+        Person person = this.personService.getPersonByEmail(customerOrder.getEmail());
+        Vehicle vehicle = this.vehicleService.getVehicleByPlate(customerOrder.getVehiclePlateNumber());
+        CustomerServices customerServices = this.customerServicesService.getCustomerServicesById(customerOrder.getServiceId());
+
+        Optional<CustomerOrder> customerOrderUpdate = this.customerOrderRepository.findById(id);
+        if (customerOrderUpdate.isEmpty()){
+            throw new ResourceNotFound(String.format("CustomerOrder with %s does not exists",id));
+        }else {
+            customerOrderUpdate.get().setServiceId(customerServices.getId());
+            customerOrderUpdate.get().setService(customerServices);
+            customerOrderUpdate.get().setVehiclePlateNumber(vehicle.getPlateNumber());
+            customerOrderUpdate.get().setVehicle(vehicle);
+            customerOrder.setDate(customerOrderUpdate.get().getDate());
+            return this.customerOrderRepository.save(customerOrderUpdate.get());
+        }
     }
 
     @Override
