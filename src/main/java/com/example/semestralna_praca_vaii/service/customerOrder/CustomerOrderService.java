@@ -5,6 +5,8 @@ import com.example.semestralna_praca_vaii.controller.exception.ResourceNotFound;
 import com.example.semestralna_praca_vaii.data.customerOrder.CustomerOrder;
 import com.example.semestralna_praca_vaii.data.customerOrder.CustomerOrderRepository;
 import com.example.semestralna_praca_vaii.data.customerServices.CustomerServices;
+import com.example.semestralna_praca_vaii.data.person.Person;
+import com.example.semestralna_praca_vaii.data.vehicle.Vehicle;
 import com.example.semestralna_praca_vaii.service.customerServices.CustomerServicesService;
 import com.example.semestralna_praca_vaii.service.person.PersonService;
 import com.example.semestralna_praca_vaii.service.vehicle.VehicleService;
@@ -51,7 +53,19 @@ public class CustomerOrderService implements ICustomerOrderService {
 
     @Override
     public CustomerOrder addCustomerOrder(CustomerOrder customerOrder) {
-        return null;
+        Person person = this.personService.getPersonByEmail(customerOrder.getEmail());
+        Vehicle vehicle = this.vehicleService.getVehicleByPlate(customerOrder.getVehiclePlateNumber());
+        CustomerServices customerServices = this.customerServicesService.getCustomerServicesById(customerOrder.getServiceId());
+        CustomerOrder order = customerOrder;
+        if (this.customerOrderRepository.existsById(customerOrder.getId())) {
+            throw new ResourceNotFound(String.format("CustomerOrder with %s already exists",customerOrder.getId()));
+        }else {
+            customerOrder.setPerson(person);
+            customerOrder.setVehicle(vehicle);
+            customerOrder.setService(customerServices);
+            return this.customerOrderRepository.save(customerOrder);
+        }
+
     }
 
     @Override
@@ -61,7 +75,8 @@ public class CustomerOrderService implements ICustomerOrderService {
 
     @Override
     public void deleteCustomerOrderById(Long id) {
-
+        CustomerOrder customerOrder = this.getCustomerOrderById(id);
+        this.customerOrderRepository.delete(customerOrder);
     }
 
     @Override

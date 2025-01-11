@@ -44,7 +44,7 @@ public class CustomerOrder {
     private String price;
 
     @Column(insertable=false, updatable=false)
-    private String serviceId;
+    private Integer serviceId;
 
     @Column(insertable=false, updatable=false)
     private String vehiclePlateNumber;
@@ -60,11 +60,11 @@ public class CustomerOrder {
         this.vehiclePlateNumber = vehiclePlateNumber;
     }
 
-    public String getServiceId() {
+    public Integer getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(String serviceId) {
+    public void setServiceId(Integer serviceId) {
         this.serviceId = serviceId;
     }
 
@@ -78,6 +78,10 @@ public class CustomerOrder {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getPrice() {
@@ -104,11 +108,11 @@ public class CustomerOrder {
         this.dateofcreate = dateofcreate;
     }
 
-    public CustomerServices getServiceid() {
+    public CustomerServices getService() {
         return serviceid;
     }
 
-    public void setServiceid(CustomerServices serviceid) {
+    public void setService(CustomerServices serviceid) {
         this.serviceid = serviceid;
     }
 
@@ -118,14 +122,6 @@ public class CustomerOrder {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
-    }
-
-    public Person getEmail() {
-        return person;
-    }
-
-    public void setEmail(Person person) {
-        this.person = person;
     }
 
     public Long getId() {
