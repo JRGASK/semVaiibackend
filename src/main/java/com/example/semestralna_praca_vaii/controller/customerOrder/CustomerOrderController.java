@@ -25,7 +25,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/customerOrder")
+@RequestMapping("/customerOrders")
 public class CustomerOrderController {
 
     private final CustomerOrderFacade customerOrderFacade;

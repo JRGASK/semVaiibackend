@@ -63,6 +63,7 @@ public class CustomerOrderService implements ICustomerOrderService {
         customerOrder.setPerson(person);
         customerOrder.setVehicle(vehicle);
         customerOrder.setService(customerServices);
+        customerOrder.setPrice(customerServices.getPrice());
         return this.customerOrderRepository.save(customerOrder);
 
 
