@@ -96,7 +96,7 @@ public class CustomerOrderController {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
     })
 
-    @PostMapping(path = "/customerService")
+    @PostMapping(path = "/customerOrder")
     public ResponseEntity<CustomerOrderDto> addCustomerOrder(@RequestBody CustomerOrderCreateDto customerOrderCreateDto){
         CustomerOrderDto customerOrderDto = this.customerOrderFacade.addCustomerOrder(customerOrderCreateDto);
         return new ResponseEntity<>(customerOrderDto, HttpStatus.CREATED);
@@ -114,7 +114,7 @@ public class CustomerOrderController {
                     description = "Customer order already exists",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
     })
-    @PutMapping(path = "/customerService/{id}")
+    @PutMapping(path = "/customerOrder/{id}")
     public ResponseEntity<CustomerOrderDto> updateCustomerOrder(@PathVariable("id") Long id, @RequestBody CustomerOrderUpdateDto customerOrderUpdateDto){
         CustomerOrderDto customerOrderDto = this.customerOrderFacade.updateCustomerOrder(id,customerOrderUpdateDto);
         return new ResponseEntity<>(customerOrderDto, HttpStatus.OK);
@@ -132,7 +132,7 @@ public class CustomerOrderController {
                     description = "Customer order not found",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)))
     })
-    @DeleteMapping(path = "/customerService/{id}")
+    @DeleteMapping(path = "/customerOrder/{id}")
     public ResponseEntity<CustomerOrderDto> deleteCustomerOrderById(@PathVariable("id") Long id){
         this.customerOrderFacade.deleteCustomerOrderById(id);
         return new ResponseEntity<>(HttpStatus.OK);

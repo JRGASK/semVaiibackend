@@ -58,21 +58,18 @@ public class CustomerOrderService implements ICustomerOrderService {
         Vehicle vehicle = this.vehicleService.getVehicleByPlate(customerOrder.getVehiclePlateNumber());
         CustomerServices customerServices = this.customerServicesService.getCustomerServicesById(customerOrder.getServiceId());
         CustomerOrder order = customerOrder;
-        if (this.customerOrderRepository.existsById(customerOrder.getId())) {
-            throw new ResourceNotFound(String.format("CustomerOrder with %s already exists",customerOrder.getId()));
-        }else {
-            customerOrder.setDateofcreate(LocalDate.now());
-            customerOrder.setPerson(person);
-            customerOrder.setVehicle(vehicle);
-            customerOrder.setService(customerServices);
-            return this.customerOrderRepository.save(customerOrder);
-        }
+
+        customerOrder.setDateofcreate(LocalDate.now());
+        customerOrder.setPerson(person);
+        customerOrder.setVehicle(vehicle);
+        customerOrder.setService(customerServices);
+        return this.customerOrderRepository.save(customerOrder);
+
 
     }
 
     @Override
     public CustomerOrder updateCustomerOrder(Long id, CustomerOrder customerOrder) {
-        Person person = this.personService.getPersonByEmail(customerOrder.getEmail());
         Vehicle vehicle = this.vehicleService.getVehicleByPlate(customerOrder.getVehiclePlateNumber());
         CustomerServices customerServices = this.customerServicesService.getCustomerServicesById(customerOrder.getServiceId());
 
