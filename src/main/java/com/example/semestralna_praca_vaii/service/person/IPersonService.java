@@ -1,7 +1,6 @@
 package com.example.semestralna_praca_vaii.service.person;
 
 import com.example.semestralna_praca_vaii.data.person.Person;
-import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonDtoWithVehicle;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

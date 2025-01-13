@@ -1,16 +1,8 @@
 package com.example.semestralna_praca_vaii.controller.login;
 
-
-import com.example.semestralna_praca_vaii.data.person.Person;
 import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonDto;
 import com.example.semestralna_praca_vaii.facade.dto.personDto.RegisterPersonDto;
-import com.example.semestralna_praca_vaii.facade.dto.error.ErrorDto;
 import com.example.semestralna_praca_vaii.facade.person.PersonFacade;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

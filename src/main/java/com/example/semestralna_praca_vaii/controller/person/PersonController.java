@@ -1,6 +1,5 @@
 package com.example.semestralna_praca_vaii.controller.person;
 
-import com.example.semestralna_praca_vaii.facade.*;
 import com.example.semestralna_praca_vaii.data.person.Person;
 import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonCreateDto;
 import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonDto;
@@ -121,6 +120,18 @@ public class PersonController {
         return new ResponseEntity<>(personDto, HttpStatus.OK);
     }
 
+    @Operation(summary = "Get person vehicles by email")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Found the person vehicles",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = PersonDto.class)) }),
+            @ApiResponse(responseCode = "400",
+                    description = "Invalid Email",
+                    content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class)) }),
+            @ApiResponse(responseCode = "404",
+                    description = "Person not found",
+                    content = @Content(mediaType = "application/json",schema = @Schema(implementation = ErrorDto.class)))
+    })
     @GetMapping(path = "/person/vehicles/{email}")
     public ResponseEntity<List<String>> getAllVehiclesByEmail(@PathVariable("email") String email){
         List<String> allVehicle = this.personFacade.getAllVehiclesByEmail(email);
