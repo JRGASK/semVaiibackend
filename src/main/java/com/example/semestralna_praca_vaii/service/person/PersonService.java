@@ -5,6 +5,7 @@ import com.example.semestralna_praca_vaii.controller.exception.ResourceNotFound;
 import com.example.semestralna_praca_vaii.data.person.Person;
 import com.example.semestralna_praca_vaii.data.person.PersonRepository;
 import com.example.semestralna_praca_vaii.data.person.RoleType;
+import com.example.semestralna_praca_vaii.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +18,12 @@ public class PersonService implements IPersonService{
 
     private final PersonRepository personRepository;
 
+    private final PasswordService passwordService;
+
     @Autowired
-    public PersonService(PersonRepository personRepository) {
+    public PersonService(PersonRepository personRepository, PasswordService passwordService) {
         this.personRepository = personRepository;
+        this.passwordService = passwordService;
     }
 
 
@@ -51,6 +55,7 @@ public class PersonService implements IPersonService{
         if(this.personRepository.existsByEmail(person.getEmail())) {
             throw  new ResourceAlreadyExists(String.format("Person with %s already exists",person.getEmail()));
         }else {
+            person.setPassword(passwordService.hashPassword(person.getPassword()));
             return this.personRepository.save(person);
         }
     }
@@ -78,6 +83,7 @@ public class PersonService implements IPersonService{
             throw new ResourceAlreadyExists(String.format("Person with %s already exists",registerPerson.getEmail()));
         }else {
             registerPerson.setRole(RoleType.CUSTOMER);
+            registerPerson.setPassword(passwordService.hashPassword(registerPerson.getPassword()));
             return this.personRepository.save(registerPerson);
         }
     }

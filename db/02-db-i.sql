@@ -1,7 +1,7 @@
 \connect db_vaiiSem
 
-INSERT INTO person  (name, surname, email, role, password, phone_number) values ('Juraj', 'Admin', 'juraj@admin.com', 'ADMIN', '123ABC','0920204050');
-INSERT INTO person  (name, surname, email, role, password, phone_number) values ('Peter', 'Customer', 'peter@admin.com', 'CUSTOMER', '123ABC','0920204050');
+INSERT INTO person  (name, surname, email, role, password, phone_number) values ('Juraj', 'Admin', 'juraj@admin.com', 'ADMIN', '$2a$10$SYQx2ie13TUAZHRldkTJzOzeC2RPojk9hpi/Lqq2/LRJLp61yh3xO','0920204050');
+INSERT INTO person  (name, surname, email, role, password, phone_number) values ('Peter', 'Customer', 'peter@admin.com', 'CUSTOMER', '$2a$10$SYQx2ie13TUAZHRldkTJzOzeC2RPojk9hpi/Lqq2/LRJLp61yh3xO','0920204050');
 
 INSERT INTO vehicle (
     type,

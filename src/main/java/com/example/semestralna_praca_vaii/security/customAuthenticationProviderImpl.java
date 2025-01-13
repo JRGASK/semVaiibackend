@@ -1,5 +1,6 @@
 package com.example.semestralna_praca_vaii.security;
 
+import com.example.semestralna_praca_vaii.service.PasswordService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -16,8 +17,11 @@ public class customAuthenticationProviderImpl implements AuthenticationProvider 
 
     private final UserDetailsService userDetailsService;
 
-    public customAuthenticationProviderImpl(@Qualifier("customUserDetailsServiceImpl") UserDetailsService userDetailsService) {
+    private final PasswordService passwordService;
+
+    public customAuthenticationProviderImpl(@Qualifier("customUserDetailsServiceImpl") UserDetailsService userDetailsService, PasswordService passwordService) {
         this.userDetailsService = userDetailsService;
+        this.passwordService = passwordService;
     }
 
     @Override
@@ -30,7 +34,7 @@ public class customAuthenticationProviderImpl implements AuthenticationProvider 
             throw new UsernameNotFoundException("The provided credentials are not valid.");
         }
 
-        if (!userDetails.getPassword().equals(password)) {
+        if (!this.passwordService.verifyPassword(password, userDetails.getPassword())) {
             throw new BadCredentialsException("The provided credentials are not valid.");
         }
 
