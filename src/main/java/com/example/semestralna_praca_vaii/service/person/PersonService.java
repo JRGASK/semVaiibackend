@@ -5,13 +5,17 @@ import com.example.semestralna_praca_vaii.controller.exception.ResourceNotFound;
 import com.example.semestralna_praca_vaii.data.person.Person;
 import com.example.semestralna_praca_vaii.data.person.PersonRepository;
 import com.example.semestralna_praca_vaii.data.person.RoleType;
+import com.example.semestralna_praca_vaii.data.vehicle.Vehicle;
 import com.example.semestralna_praca_vaii.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonService implements IPersonService{
@@ -25,7 +29,6 @@ public class PersonService implements IPersonService{
         this.personRepository = personRepository;
         this.passwordService = passwordService;
     }
-
 
     @Override
     public Page<Person> getAllPersons(Pageable pageable) {
@@ -85,6 +88,18 @@ public class PersonService implements IPersonService{
             registerPerson.setRole(RoleType.CUSTOMER);
             registerPerson.setPassword(passwordService.hashPassword(registerPerson.getPassword()));
             return this.personRepository.save(registerPerson);
+        }
+    }
+
+    public List<String> getVehiclesByEmail(String email) {
+        Optional<Person> person = this.personRepository.findByEmail(email);
+
+        if(person.isEmpty()) {
+            throw new ResourceNotFound(String.format("Person with %s does not exists",email));
+        }else {
+            return person.get().getVehicles().stream()
+                    .map(Vehicle::getPlateNumber)
+                    .collect(Collectors.toList());
         }
     }
 }

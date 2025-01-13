@@ -7,6 +7,8 @@ import com.example.semestralna_praca_vaii.facade.dto.personDto.RegisterPersonDto
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedModel;
 
+import java.util.List;
+
 public interface IPersonFacade {
 
     PagedModel<PersonDto> getAllPersons(Pageable pageable);
@@ -20,4 +22,6 @@ public interface IPersonFacade {
     PersonDto updatePerson(String email, PersonUpdateDto personUpdateDto);
 
     PersonDto registerPerson(RegisterPersonDto registerPersonDto);
+
+    List<String> getAllVehiclesByEmail(String email);
 }

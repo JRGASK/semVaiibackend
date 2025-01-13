@@ -1,6 +1,6 @@
 package com.example.semestralna_praca_vaii.controller.person;
 
-
+import com.example.semestralna_praca_vaii.facade.*;
 import com.example.semestralna_praca_vaii.data.person.Person;
 import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonCreateDto;
 import com.example.semestralna_praca_vaii.facade.dto.personDto.PersonDto;
@@ -20,6 +20,8 @@ import org.springframework.data.web.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("persons")
@@ -117,6 +119,12 @@ public class PersonController {
     public ResponseEntity<PersonDto> updatePerson(@PathVariable("email") String email, @RequestBody PersonUpdateDto personUpdateDto){
         PersonDto personDto = this.personFacade.updatePerson(email,personUpdateDto);
         return new ResponseEntity<>(personDto, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/person/vehicles/{email}")
+    public ResponseEntity<List<String>> getAllVehiclesByEmail(@PathVariable("email") String email){
+        List<String> allVehicle = this.personFacade.getAllVehiclesByEmail(email);
+        return new ResponseEntity<>(allVehicle, HttpStatus.OK);
     }
 
 }

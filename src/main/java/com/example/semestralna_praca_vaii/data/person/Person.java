@@ -1,10 +1,14 @@
 package com.example.semestralna_praca_vaii.data.person;
 
 //TODO ROLE AKO
+import com.example.semestralna_praca_vaii.data.vehicle.Vehicle;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -43,6 +47,17 @@ public class Person {
     @Size(max = 255)
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vehicle> vehicles;
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;

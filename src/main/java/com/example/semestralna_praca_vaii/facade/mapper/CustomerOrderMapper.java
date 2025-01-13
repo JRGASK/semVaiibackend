@@ -1,11 +1,9 @@
 package com.example.semestralna_praca_vaii.facade.mapper;
 
 import com.example.semestralna_praca_vaii.data.customerOrder.CustomerOrder;
-import com.example.semestralna_praca_vaii.data.vehicle.Vehicle;
 import com.example.semestralna_praca_vaii.facade.dto.customerOrderDto.CustomerOrderCreateDto;
 import com.example.semestralna_praca_vaii.facade.dto.customerOrderDto.CustomerOrderDto;
 import com.example.semestralna_praca_vaii.facade.dto.customerOrderDto.CustomerOrderUpdateDto;
-import com.example.semestralna_praca_vaii.facade.dto.vehicleDto.VehicleDto;
 import org.mapstruct.Mapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
